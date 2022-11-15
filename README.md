@@ -7,7 +7,6 @@
 - Firebase
 - Express
 - Cors
-- React Hook Form
 
 ## **🛠️ Features**
 
@@ -20,19 +19,19 @@
 BaseURL: https://us-central1-apimathschool-4971a.cloudfunctions.net/app
 
 ```js
-Cadastro de usuario: 
+- Cadastro de usuario: 
 POST: /users/create
 
-Detalhe de Usuário:
+- Detalhe de Usuário:
 GET: /get/id
 
-Todos os Usuários:
+- Todos os Usuários:
 GET: /api/getAll
 
-Alteração de Informações:
+- Alteração de Informações:
 PUT: /update/id
 
-Deletar Usuário:
+- Deletar Usuário:
 DELETE: /delete/id
 
 ```
