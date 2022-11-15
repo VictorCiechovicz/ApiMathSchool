@@ -1,4 +1,3 @@
-# ApiMathSchool
 # ****💻ApiMathSchool****
 
  API build with Firebase for managing users of an Application. This application was created for the purpose of studies.
