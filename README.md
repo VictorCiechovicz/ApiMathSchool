@@ -1,2 +1,1 @@
 # ApiMathSchool
-# ApiMathSchool
