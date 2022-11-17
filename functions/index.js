@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 app.post('/autenticate', (req, res) => {
   (async () => {
     try {
-      db.collection('userDetails').endAt({
+      db.collection('userDetails').endBefore({
         email: req.body.email,
         password: req.body.password
       })
