@@ -22,12 +22,34 @@ const db = admin.firestore()
 //routes
 app.get('/', (req, res) => {
   return res.status(200).send('Api funcionando.')
+  
 })
+
+//Auth
+
+app.post('/autenticate', (req, res) => {
+  (async () => {
+    try {
+      db.collection('userDetails').endAt({
+        email: req.body.email,
+        password: req.body.password
+      })
+
+      return res.status(200).send({ status: 'Sucess', data: response })
+    } catch (error) {
+      console.log(error)
+      return res
+        .status(500)
+        .send({ status: 'Failed', msg: 'Não foi possivel salvar os dados' })
+    }
+  })()
+})
+
 
 //create => post()
 
 app.post('/users/create', (req, res) => {
-  ;(async () => {
+  (async () => {
     try {
       await db.collection('userDetails').doc(`/${Date.now()}/`).create({
         id: Date.now(),
@@ -39,7 +61,7 @@ app.post('/users/create', (req, res) => {
 
       return res
         .status(200)
-        .send({ status: 'Secess', msg: 'Usuario cadastrado' })
+        .send({ status: 'Sucess', msg: 'Usuario cadastrado' })
     } catch (error) {
       console.log(error)
       return res
@@ -58,7 +80,7 @@ app.get('/api/get/:id', (req, res) => {
       let userDetails = await reqUser.get()
       let response = userDetails.data()
 
-      return res.status(200).send({ status: 'Secess', data: response })
+      return res.status(200).send({ status: 'Sucess', data: response })
     } catch (error) {
       console.log(error)
       return res
