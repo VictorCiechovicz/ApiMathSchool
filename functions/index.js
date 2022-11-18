@@ -1,7 +1,6 @@
 const functions = require('firebase-functions')
 
 const admin = require('firebase-admin')
-
 var serviceAccount = require('./serviceAccountKey.json')
 
 admin.initializeApp({
@@ -10,6 +9,7 @@ admin.initializeApp({
 
 const express = require('express')
 const cors = require('cors')
+const { firebaseConfig } = require('firebase-functions')
 
 //main app
 const app = express()
@@ -22,15 +22,14 @@ const db = admin.firestore()
 //routes
 app.get('/', (req, res) => {
   return res.status(200).send('Api funcionando.')
-  
 })
 
 //Auth
 
 app.post('/autenticate', (req, res) => {
-  (async () => {
+  ;(async () => {
     try {
-      db.collection('userDetails').endBefore({
+      db.collection('userDetails').doc({
         email: req.body.email,
         password: req.body.password
       })
@@ -49,7 +48,7 @@ app.post('/autenticate', (req, res) => {
 //create => post()
 
 app.post('/users/create', (req, res) => {
-  (async () => {
+  ;(async () => {
     try {
       await db.collection('userDetails').doc(`/${Date.now()}/`).create({
         id: Date.now(),
@@ -164,6 +163,8 @@ app.delete('/users/delete/:id', (req, res) => {
     }
   })()
 })
+
+
 
 //exports the api to firebase cloud functions
 
